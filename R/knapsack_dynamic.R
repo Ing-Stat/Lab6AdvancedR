@@ -25,7 +25,7 @@ knapsack_dynamic <- function(cx, W){
   m_tabulation <- matrix(data = 0, nrow = n_items + 1, ncol = W + 1, byrow = FALSE, dimnames = NULL)
   #print(m_tabulation)
   
-  #write the recursive formula into the recursive function, Currently, nonrecursive implementation
+  #write the recursive formula into the recursive function, Currently, nonrecursive implementation. The formula can be found at https://en.wikipedia.org/wiki/Knapsack_problem#0-1%20knapsack%20problem
   tabulation_formula <- function(tabulation_row_number, tabulation_column_number){
     if (cx$w[tabulation_row_number - 1] > W){
       m_tabulation[tabulation_row_number, tabulation_column_number] <<- m_tabulation[tabulation_row_number - 1, tabulation_column_number]
@@ -66,13 +66,15 @@ knapsack_dynamic <- function(cx, W){
   }
   
   #print(v_included_objects)
+  
   #calculate the running time
   stopTime <- Sys.time()
   
   timeDiff <- stopTime - startTime
   timeDiff
   
-  return(list("value" = n_max_value, "elements" = sort.int(v_included_objects), "time_elapsed" = round(timeDiff, digits = 4)))
+  resultat <- list("value" = n_max_value, "elements" = sort.int(v_included_objects), "time_elapsed" = round(timeDiff, digits = 4))
+  return(resultat)
 }
 
 
