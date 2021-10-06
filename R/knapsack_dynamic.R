@@ -14,7 +14,16 @@ knapsack_dynamic <- function(cx, W){
   if(min(cx$v) < 0) {stop("Vector 'v' is not all positive!")}
   if(min(cx$w) < 0) {stop("Vector 'w' is not all positive!")}
   
+  #create the tabulation matrix:
+  m_tabulation <- matrix(data = NA, nrow = length(cx$w) + 1, ncol = W + 1, byrow = FALSE, dimnames = NULL)
+  m_tabulation[1,] <- 0
+  m_tabulation[,1] <- 0
+  #print(m_tabulation)
+  
   #write the recursive formula into the recursive function:
+  tabulation_formula <- function(tabulation_row_number, tabulation_column_number){
+    
+  }
   
   #call the function recursively until the table is filled
   
@@ -24,4 +33,4 @@ knapsack_dynamic <- function(cx, W){
 }
 
 
-knapsack_dynamic(cx = knapsack_objects[1:8, ], W = 3500)
+knapsack_dynamic(cx = knapsack_objects[1:8, ], W = 2500)
