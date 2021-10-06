@@ -17,6 +17,8 @@ knapsack_dynamic <- function(cx, W){
   if(min(cx$v) < 0) {stop("Vector 'v' is not all positive!")}
   if(min(cx$w) < 0) {stop("Vector 'w' is not all positive!")}
   
+  startTime <- Sys.time()
+  
   #print(cx)
   
   #create the tabulation matrix:
@@ -65,9 +67,13 @@ knapsack_dynamic <- function(cx, W){
   
   #print(v_included_objects)
   #calculate the running time
+  stopTime <- Sys.time()
   
-  return(list("value" = n_max_value, "elements" = sort.int(v_included_objects)))
+  timeDiff <- stopTime - startTime
+  timeDiff
+  
+  return(list("value" = n_max_value, "elements" = sort.int(v_included_objects), "time_elapsed" = round(timeDiff, digits = 4)))
 }
 
 
-knapsack_dynamic(cx = knapsack_objects[1:8, ], W = 3500)
+knapsack_dynamic(cx = knapsack_objects[1:16, ], W = 3500)
