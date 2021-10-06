@@ -4,33 +4,52 @@ set.seed(42, kind = "Mersenne-Twister", normal.kind = "Inversion")
 n <- 16
 knapsack_objects <- 
   data.frame(
-    w = sample(1:4000, size = n, replace = TRUE), v = runif(n = n, 0, 10000))
+    w = sample(1:10, size = n, replace = TRUE), v = runif(n = n, 0, 10000))
 
 
 knapsack_dynamic <- function(cx, W){
+  
+  #Number of items
+  n_items <- length(cx$w)
   
   #check the input
   if(!is.data.frame(cx) || (length(cx) != 2)){(stop("Not a data frame or incorrect number of parameters!"))}
   if(min(cx$v) < 0) {stop("Vector 'v' is not all positive!")}
   if(min(cx$w) < 0) {stop("Vector 'w' is not all positive!")}
   
+  print(cx)
+  
   #create the tabulation matrix:
-  m_tabulation <- matrix(data = NA, nrow = length(cx$w) + 1, ncol = W + 1, byrow = FALSE, dimnames = NULL)
-  m_tabulation[1,] <- 0
-  m_tabulation[,1] <- 0
+  m_tabulation <- matrix(data = 0, nrow = n_items + 1, ncol = W + 1, byrow = FALSE, dimnames = NULL)
   #print(m_tabulation)
   
-  #write the recursive formula into the recursive function:
+  #write the recursive formula into the recursive function, Currently, nonrecursive implementation
   tabulation_formula <- function(tabulation_row_number, tabulation_column_number){
-    
+    if (cx$w[tabulation_row_number - 1] > W){
+      m_tabulation[tabulation_row_number, tabulation_column_number] <<- m_tabulation[tabulation_row_number - 1, tabulation_column_number]
+      return(m_tabulation[tabulation_row_number, tabulation_column_number])
+    }
+    else if (cx$w[tabulation_row_number - 1] <= W){
+      m_tabulation[tabulation_row_number, tabulation_column_number] <<- max(m_tabulation[tabulation_row_number - 1, tabulation_column_number],  m_tabulation[tabulation_row_number - 1, max(tabulation_column_number - cx$w[tabulation_row_number - 1], 0)] + cx$v[tabulation_row_number - 1])
+      return(m_tabulation[tabulation_row_number, tabulation_column_number])
+    }
+    else{
+      return(m_tabulation[tabulation_row_number, tabulation_column_number])
+    }
   }
   
-  #call the function recursively until the table is filled
-  
+  #Fill the table. Currently, nonrecursive implementation. As can be observed, the computational complexity is =(W*n_items)
+  for (items in 2:(n_items + 1)) {
+    for (tabulated_weight in 2:(W + 1)) {
+      tabulation_formula(items, tabulated_weight)
+      print(m_tabulation)
+    }
+  }
+
   #find the best solution from the table
   
   #calculate the running time
 }
 
 
-knapsack_dynamic(cx = knapsack_objects[1:8, ], W = 2500)
+knapsack_dynamic(cx = knapsack_objects[1:4, ], W = 10)
