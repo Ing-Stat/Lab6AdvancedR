@@ -1,0 +1,16 @@
+Package: Lab6AdvancedR
+Type: Package
+Title: Knapsack Problem
+Version: 1.0
+Date: 2021-09-12
+Authors@R: c(
+    person("Kristina", "Levina", email = "myemail@gmail.com", role = "cre"),
+    person("Ingemar", "Sjostrom", email = "myemail@gmail.com", role = "aut"))
+Description: This package realises three approaches to the knapsack problem: brute force, tabulator, and approximate approaches.
+License: file LICENSE
+RoxygenNote: 7.1.2
+Suggests: testthat
+Encoding: UTF-8
+Imports: stringr,
+    FRACTION,
+    utils
