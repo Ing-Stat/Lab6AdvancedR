@@ -85,4 +85,4 @@ brute_force_knapsack <- function(cx, W) {
   return(resultat)
 }
 
-brute_force_knapsack(cx = knapsack_objects[1:16, ], W = 3500)
+#brute_force_knapsack(cx = knapsack_objects[1:16, ], W = 3500)

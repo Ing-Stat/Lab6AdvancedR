@@ -25,6 +25,7 @@ knapsack_greedy <- function(cx, W){
   
   if(min(cx$v) < 0) {stop("Vector 'v' is not all positive!")}
   if(min(cx$w) < 0) {stop("Vector 'w' is not all positive!")}
+  if(W < 0) {stop("The weight should be positive!")}
   
   startTime <- Sys.time()
   
@@ -52,4 +53,4 @@ knapsack_greedy <- function(cx, W){
 }  
 
 
-knapsack_greedy(cx = knapsack_objects[1:800, ], W = 3500) 
+#knapsack_greedy(cx = knapsack_objects[1:800, ], W = 3500) 
