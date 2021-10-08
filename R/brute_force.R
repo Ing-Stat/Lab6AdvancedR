@@ -1,4 +1,5 @@
-RNGversion(min(as.character(getRversion()), "3.5.3"))
+profvis::profvis({
+  RNGversion(min(as.character(getRversion()), "3.5.3"))
 set.seed(42, kind = "Mersenne-Twister", normal.kind = "Inversion")
 
 n <- 16
@@ -13,11 +14,12 @@ brute_force_knapsack <- function(cx, W) {
   #' 
   #' @return 
   
+
   if(!is.data.frame(cx) || (length(cx) != 2)){(stop("Not a data frame or incorrect number of parameters!"))}
   if(min(cx$v) < 0) {stop("Vector 'v' is not all positive!")}
   if(min(cx$w) < 0) {stop("Vector 'w' is not all positive!")}
   if(W < 0) {stop("The weight should be positive!")}
-  
+
   startTime <- Sys.time()
   
   vectorMaxCombinations <- vector()
@@ -85,4 +87,5 @@ brute_force_knapsack <- function(cx, W) {
   return(resultat)
 }
 
-#brute_force_knapsack(cx = knapsack_objects[1:16, ], W = 3500)
+brute_force_knapsack(cx = knapsack_objects[1:16, ], W = 3500)
+})

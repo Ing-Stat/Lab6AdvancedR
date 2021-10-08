@@ -20,21 +20,21 @@ test_that("functions rejects errounous input.", {
 
 test_that("Function return correct results.", {
   gk <- knapsack_greedy(cx = knapsack_objects[1:8,], W = 3500)
-  expect_equal(round(gk$value), 22772)
+  expect_equal(round(gk$value), 15428)
   #expect_equal(round(gk$elements[1]), 7)
-  expect_true(all(round(gk$elements) %in% c(3, 6, 8)))
+  expect_true(all(round(gk$elements) %in% c(3, 8)))
   
   gk <- knapsack_greedy(cx = knapsack_objects[1:12,], W = 3500)
-  expect_equal(round(gk$value), 22772)
-  expect_true(all(round(gk$elements) %in% c(3, 6, 8)))
+  expect_equal(round(gk$value), 15428)
+  expect_true(all(round(gk$elements) %in% c(3, 8)))
   
   gk <- knapsack_greedy(cx = knapsack_objects[1:8,], W = 2000)
-  expect_equal(round(gk$value), 22772)
-  expect_true(all(round(gk$elements) %in% c(3, 6, 8)))
+  expect_equal(round(gk$value), 15428)
+  expect_true(all(round(gk$elements) %in% c(3, 8)))
   
   gk <- knapsack_greedy(cx = knapsack_objects[1:12,], W = 2000)
-  expect_equal(round(gk$value), 22772)
-  expect_true(all(round(gk$elements) %in% c(3, 6, 8)))
+  expect_equal(round(gk$value), 15428)
+  expect_true(all(round(gk$elements) %in% c(3, 8)))
   
   st <- system.time(gk <- knapsack_greedy(cx = knapsack_objects[1:16,], W = 2000))
   expect_true(as.numeric(st)[2] <= 0.01)
