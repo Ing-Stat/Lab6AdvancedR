@@ -1,7 +1,7 @@
 RNGversion(min(as.character(getRversion()), "3.5.3"))
 set.seed(42, kind = "Mersenne-Twister", normal.kind = "Inversion")
 
-n <- 800
+n <- 16
 knapsack_objects <- 
   data.frame(
     w = sample(1:4000, size = n, replace = TRUE), v = runif(n = n, 0, 10000))
@@ -78,4 +78,4 @@ knapsack_dynamic <- function(cx, W){
 }
 
 
-knapsack_dynamic(cx = knapsack_objects[1:800, ], W = 3500)
+knapsack_dynamic(cx = knapsack_objects[1:16, ], W = 3500)

@@ -76,7 +76,7 @@ brute_force_knapsack <- function(cx, W) {
   timeDiff <- stopTime - startTime
   timeDiff
   
-  resultat <- c(value = round(maxValue, digits = 3), elements = kombination, time_elapsed = round(timeDiff, digits = 4))
+  resultat <- list("value" = round(maxValue, digits = 3), "elements" = kombination, "time_elapsed" = round(timeDiff, digits = 4))
   return(resultat)
 }
 
