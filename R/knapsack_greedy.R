@@ -1,8 +1,8 @@
-n <- 800
-knapsack_objects <-
-  data.frame(
-    w = sample(1:4000, size = n, replace = TRUE), v = runif(n = n, 0, 10000))
-
+n <- 2000
+knapsack_objects <- data.frame(
+  w=sample(1:4000, size = n, replace = TRUE),
+  v=runif(n = n, 0, 10000)
+)
 
 knapsack_greedy <- function(cx, W){
   #' Title
@@ -53,4 +53,4 @@ knapsack_greedy <- function(cx, W){
 }  
 
 
-#knapsack_greedy(cx = knapsack_objects[1:800, ], W = 3500) 
+knapsack_greedy(cx = knapsack_objects[1:8, ], W = 3500) 
