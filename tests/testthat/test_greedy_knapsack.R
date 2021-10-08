@@ -35,7 +35,7 @@ test_that("Function return correct results.", {
   expect_equal(round(gk$value), 15428)
   expect_true(all(round(gk$elements) %in% c(3, 8)))
   
-  st <- system.time(gk <- knapsack_greedy(x = knapsack_objects[1:16,], W = 2000))
+  st <- system.time(gk <- knapsack_greedy(cx = knapsack_objects[1:16,], W = 2000))
   expect_true(as.numeric(st)[2] <= 0.01)
   
   gk <- knapsack_greedy(cx = knapsack_objects[1:800,], W = 3500)
