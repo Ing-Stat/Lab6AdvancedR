@@ -5,6 +5,11 @@ knapsack_objects <-
 
 
 knapsack_greedy <- function(cx, W){
+  #' Title
+  #'
+  #' @export knapsack_greedy
+  #' 
+  #' @return 
   
   startTime <- Sys.time() 
   
