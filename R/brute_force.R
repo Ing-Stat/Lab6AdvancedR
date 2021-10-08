@@ -7,11 +7,16 @@ knapsack_objects <-
     w = sample(1:4000, size = n, replace = TRUE), v = runif(n = n, 0, 10000))
 
 brute_force_knapsack <- function(cx, W) {
-  #print(length(cx$w))
+  #' Title
+  #'
+  #' @export brute_force_knapsack
+  #' 
+  #' @return 
   
   if(!is.data.frame(cx) || (length(cx) != 2)){(stop("Not a data frame or incorrect number of parameters!"))}
   if(min(cx$v) < 0) {stop("Vector 'v' is not all positive!")}
   if(min(cx$w) < 0) {stop("Vector 'w' is not all positive!")}
+  if(W < 0) {stop("The weight should be positive!")}
   
   startTime <- Sys.time()
   
@@ -69,7 +74,7 @@ brute_force_knapsack <- function(cx, W) {
   kombination <- vectorMaxCombinations[maxValueRow]
   
   maxValue
-  kombination
+  kombination <- as.numeric(unlist((strsplit(kombination, ","))))
   
   stopTime <- Sys.time()
   

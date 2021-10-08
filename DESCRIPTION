@@ -13,4 +13,6 @@ Suggests: testthat
 Encoding: UTF-8
 Imports: stringr,
     FRACTION,
-    utils
+    utils,
+    profvis
+
